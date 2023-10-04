@@ -1,32 +1,13 @@
 from __future__ import annotations
+
 from dataclasses import dataclass
+
+from .Provider import (Aibn, Aichat, AItianhu, AItianhuSpace, Aivvm, Bard,
+                       BaseProvider, Bing, ChatBase, ChatForAi, ChatgptAi,
+                       ChatgptDuo, ChatgptLogin, Cromicle, DeepAi, FreeGpt,
+                       GptGo, H2o, Myshell, PerplexityAi, RetryProvider,
+                       Vercel, Wewordle, Ylokh, Yqcloud)
 from .typing import Union
-from .Provider import BaseProvider, RetryProvider
-from .Provider import (
-    AItianhuSpace,
-    ChatgptLogin,
-    PerplexityAi,
-    ChatgptDuo,
-    ChatgptAi,
-    ChatForAi,
-    ChatBase,
-    AItianhu,
-    Wewordle,
-    Yqcloud,
-    Myshell,
-    FreeGpt,
-    Vercel,
-    DeepAi,
-    Aichat,
-    Aivvm,
-    GptGo,
-    Ylokh,
-    Bard,
-    Aibn,
-    Bing,
-    H2o,
-    Cromicle,
-)
 
 
 @dataclass(unsafe_hash=True)
