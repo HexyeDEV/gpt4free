@@ -12,6 +12,7 @@ from .typing import Union
 
 @dataclass(unsafe_hash=True)
 class Model:
+    """ """
     name: str
     base_provider: str
     best_provider: Union[type[BaseProvider], RetryProvider] = None
@@ -196,6 +197,7 @@ llama7b_v2_chat = Model(
 
 
 class ModelUtils:
+    """ """
     convert: dict[str, Model] = {
         # gpt-3.5
         "gpt-3.5-turbo": gpt_35_turbo,
