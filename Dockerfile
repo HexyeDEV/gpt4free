@@ -1,18 +1,36 @@
-FROM python:3.10
+# Use the official lightweight Python image.
+# https://hub.docker.com/_/python
+FROM python:3.9-slim
 
-RUN apt-get update && apt-get install -y git
+# Ensure Python outputs everything immediately (useful for real-time logging in Docker).
+ENV PYTHONUNBUFFERED 1
 
-RUN mkdir -p /usr/src/gpt4free
-WORKDIR /usr/src/gpt4free
+# Set the working directory in the container.
+WORKDIR /app
 
-# RUN pip config set global.index-url https://mirrors.aliyun.com/pypi/simple/
-# RUN pip config set global.trusted-host mirrors.aliyun.com
+# Update the system packages and install system-level dependencies required for compilation.
+# gcc: Compiler required for some Python packages.
+# build-essential: Contains necessary tools and libraries for building software.
+RUN apt-get update && apt-get install -y --no-install-recommends \
+  gcc \
+  build-essential \
+  && rm -rf /var/lib/apt/lists/*
 
-COPY requirements.txt /usr/src/gpt4free/
-RUN pip install --no-cache-dir -r requirements.txt
-COPY . /usr/src/gpt4free
-RUN cp gui/streamlit_app.py .
+# Copy the project's requirements file into the container.
+COPY requirements.txt /app/
 
-EXPOSE 8501
+# Upgrade pip for the latest features and install the project's Python dependencies.
+RUN pip install --upgrade pip && pip install -r requirements.txt
 
-CMD ["streamlit", "run", "streamlit_app.py"]
+# Copy the entire project into the container.
+# This may include all code, assets, and configuration files required to run the application.
+COPY . /app/
+
+# Install additional requirements specific to the interference module/package.
+RUN pip install -r interference/requirements.txt
+
+# Expose port 1337
+EXPOSE 1337
+
+# Define the default command to run the app using Python's module mode.
+CMD ["python", "-m", "interference.app"]
