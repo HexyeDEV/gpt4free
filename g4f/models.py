@@ -2,11 +2,31 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from .Provider import (Aibn, Aichat, AItianhu, AItianhuSpace, Aivvm, Bard,
-                       BaseProvider, Bing, ChatBase, ChatForAi, ChatgptAi,
-                       ChatgptDuo, ChatgptLogin, Cromicle, DeepAi, FreeGpt,
-                       GptGo, H2o, Myshell, PerplexityAi, RetryProvider,
-                       Vercel, Wewordle, Ylokh, Yqcloud)
+from .Provider import Aibn
+from .Provider import Aichat
+from .Provider import AItianhu
+from .Provider import AItianhuSpace
+from .Provider import Aivvm
+from .Provider import Bard
+from .Provider import BaseProvider
+from .Provider import Bing
+from .Provider import ChatBase
+from .Provider import ChatForAi
+from .Provider import ChatgptAi
+from .Provider import ChatgptDuo
+from .Provider import ChatgptLogin
+from .Provider import Cromicle
+from .Provider import DeepAi
+from .Provider import FreeGpt
+from .Provider import GptGo
+from .Provider import H2o
+from .Provider import Myshell
+from .Provider import PerplexityAi
+from .Provider import RetryProvider
+from .Provider import Vercel
+from .Provider import Wewordle
+from .Provider import Ylokh
+from .Provider import Yqcloud
 from .typing import Union
 
 
